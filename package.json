@@ -1,5 +1,6 @@
 {
   "name": "smart-home-server",
+  "description": "A NodeJS server for controlling ESP8266 micro controllers using johnny-five.",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
