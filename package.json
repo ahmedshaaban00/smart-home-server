@@ -1,0 +1,30 @@
+{
+  "name": "smart-home-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node  -r esm .",
+    "lint": "eslint -c ./.eslintrc.js . --no-eslintrc"
+  },
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn lint"
+    }
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "etherport-client": "^0.1.4",
+    "johnny-five": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.4"
+  }
+}
