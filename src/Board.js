@@ -1,7 +1,6 @@
 import { EtherPortClient } from 'etherport-client';
 import { Firmata } from 'firmata-io';
-import colors from 'colors';
-import { promiseWithTimeout } from './utils';
+import { promiseWithTimeout, log } from './utils';
 
 export default class Board {
   constructor({ name = 'Unknown', host, port, autoconnect = 3000 }) {
@@ -28,7 +27,7 @@ export default class Board {
 
     this._attachConnectListeners();
 
-    this._log('Initializing...');
+    this._log('Connecting...');
   }
 
   onReady(readyCallback) {
@@ -84,24 +83,8 @@ export default class Board {
     })(this);
   }
 
-  // Handling Logs: message(string), type(SUCCESS, ERROR)
+  // Handling Logs
   _log(message, type) {
-    let color;
-    switch (type) {
-      case 'SUCCESS':
-        color = 'green';
-        break;
-      case 'ERROR':
-        color = 'red';
-        break;
-      default:
-        color = 'white';
-    }
-
-    console.log(
-      `Board ${colors.bold.magenta(this._instance.name)}: ${colors[color](
-        message
-      )}`
-    );
+    log(message, type, `Board ${this._instance.name}`);
   }
 }
